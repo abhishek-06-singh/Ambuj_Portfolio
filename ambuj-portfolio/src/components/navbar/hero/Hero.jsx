@@ -1,6 +1,7 @@
 import React from "react";
 import { IoChevronForwardSharp } from "react-icons/io5";
 import HeroImg from "../../../assets/header.jpg";
+import "../../../App.css";
 
 const Hero = () => {
   return (
@@ -36,14 +37,21 @@ const Hero = () => {
             alt="Your Company"
           /> */}
           <div className="mt-24 sm:mt-32 lg:mt-16">
-            <a href="#" className="inline-flex space-x-6">
-              <span className="rounded-full bg-indigo-600/10 px-3 py-1 text-sm font-semibold leading-6 text-indigo-600 ring-1 ring-inset ring-indigo-600/10">
-                Hey there 👋
+            <a href="#" className="inline-flex space-x-6 ">
+              <span className="rounded-full bg-indigo-600/10 p-5 sm:text-3xl text-xl md:text-4xl font-semibold leading-6 text-indigo-600 ring-1 ring-inset ring-indigo-600/10">
+                Hey there{" "}
+                <span
+                  className="inline-block animate-spin-slow"
+                  role="img"
+                  aria-label="wave"
+                >
+                  👋
+                </span>
               </span>
             </a>
           </div>
-          <h1 className="mt-10 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            I am Ambuj Dubey , from New Delhi , India
+          <h1 className="mt-10 text-3xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+            I am Ambuj Dubey , from New Delhi, India
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-600">
             working as a full time Associate Professor at PW (PhysicsWallah).
