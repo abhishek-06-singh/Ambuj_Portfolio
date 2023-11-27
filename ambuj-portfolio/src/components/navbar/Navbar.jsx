@@ -5,11 +5,14 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import header from "../../assets/header.jpg";
 import { FaSearch } from "react-icons/fa";
 import { AiOutlineBars, AiOutlineBell, AiOutlineClose } from "react-icons/ai";
+import { Link, animateScroll as scroll } from "react-scroll";
 const Navbar = () => {
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
-
+  const scrollToFeatures = () => {
+    scroll.scrollTo(800);
+  };
   return (
     <Disclosure as="nav" className="bg-white shadow">
       {({ open }) => (
@@ -19,11 +22,14 @@ const Navbar = () => {
               <div className="flex px-2 lg:px-0">
                 <div className="hidden lg:ml-6 lg:flex lg:space-x-8">
                   {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
+
                   <a
                     href="#"
                     className="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900"
                   >
-                    About Me
+                    <Link to="features" smooth={true} duration={1500}>
+                      About Me
+                    </Link>
                   </a>
                   <a
                     href="#"
@@ -143,7 +149,9 @@ const Navbar = () => {
                 href="#"
                 className="block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-medium text-indigo-700"
               >
-                About Me
+                <Link to="features" smooth={true} duration={1500}>
+                  About Me
+                </Link>
               </Disclosure.Button>
               <Disclosure.Button
                 as="a"
