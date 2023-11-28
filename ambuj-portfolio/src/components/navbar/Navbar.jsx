@@ -5,8 +5,15 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import header from "../../assets/header.jpg";
 import { FaSearch } from "react-icons/fa";
 import { AiOutlineBars, AiOutlineBell, AiOutlineClose } from "react-icons/ai";
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
+import { Link, useNavigate } from "react-router-dom";
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const handleRedirect = (path) => {
+    // Use the navigate function to redirect to the specified path
+    navigate(path);
+  };
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
@@ -27,29 +34,36 @@ const Navbar = () => {
                     href="#"
                     className="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900"
                   >
-                    <Link to="features" smooth={true} duration={1500}>
+                    <ScrollLink to="features" smooth={true} duration={1500}>
                       About Me
-                    </Link>
+                    </ScrollLink>
                   </a>
                   <a
                     href="#"
                     className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
                   >
-                    <Link to="experience" smooth={true} duration={1500}>
+                    <ScrollLink to="experience" smooth={true} duration={1500}>
                       Experience
-                    </Link>
+                    </ScrollLink>
                   </a>
                   <a
                     href="#"
                     className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
                   >
-                    Qualifications
+                    <ScrollLink
+                      to="qualification"
+                      smooth={true}
+                      duration={1500}
+                    >
+                      Qualification
+                    </ScrollLink>
                   </a>
                   <a
                     href="#"
                     className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                    onClick={() => handleRedirect("/contact")}
                   >
-                    Contact
+                    <Link to="/contact">Contact</Link>
                   </a>
                 </div>
               </div>
@@ -151,23 +165,27 @@ const Navbar = () => {
                 href="#"
                 className="block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-medium text-indigo-700"
               >
-                <Link to="features" smooth={true} duration={1500}>
+                <ScrollLink to="features" smooth={true} duration={1500}>
                   About Me
-                </Link>
+                </ScrollLink>
               </Disclosure.Button>
               <Disclosure.Button
                 as="a"
                 href="#"
                 className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800"
               >
-                Experience
+                <ScrollLink to="experience" smooth={true} duration={1500}>
+                  Experience
+                </ScrollLink>
               </Disclosure.Button>
               <Disclosure.Button
                 as="a"
                 href="#"
                 className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800"
               >
-                Qualification
+                <ScrollLink to="qualification" smooth={true} duration={1500}>
+                  Qualification
+                </ScrollLink>
               </Disclosure.Button>
               <Disclosure.Button
                 as="a"
