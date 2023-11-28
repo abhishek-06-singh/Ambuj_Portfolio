@@ -4,6 +4,7 @@ import Hero from "./components/navbar/hero/Hero";
 import Feature from "./components/feature/Feature";
 import ExperienceBlog from "./components/experience/ExperienceBlog";
 import Qualification from "./components/qualification/Qualification";
+import Footer from "./components/footer/Footer";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <Feature />
       <ExperienceBlog />
       <Qualification />
+      <Footer />
     </div>
   );
 };

@@ -13,7 +13,11 @@ const Navbar = () => {
   const handleRedirect = (path) => {
     // Use the navigate function to redirect to the specified path
     navigate(path);
+
+    // Reload the page
+    // window.location.reload();
   };
+
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
@@ -190,6 +194,7 @@ const Navbar = () => {
               <Disclosure.Button
                 as="a"
                 href="#"
+                onClick={() => handleRedirect("/contact")}
                 className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800"
               >
                 <Link to="/contact">Contact</Link>
