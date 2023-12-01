@@ -1,14 +1,29 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { IoChevronForwardSharp } from "react-icons/io5";
 import HeroImg from "../../../assets/header.jpg";
 import "../../../App.css";
+import Button from "../../Button";
 
 const Hero = () => {
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
+
   return (
-    <div className="relative isolate overflow-hidden bg-white">
-      <svg
+    <motion.div
+      className="relative isolate overflow-hidden bg-white"
+      initial="hidden"
+      animate="visible"
+      variants={fadeIn}
+    >
+      <motion.svg
         className="absolute inset-0 -z-10 h-full w-full stroke-gray-300 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
         aria-hidden="true"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
       >
         <defs>
           <pattern
@@ -28,17 +43,17 @@ const Hero = () => {
           strokeWidth={0}
           fill="url(#0787a7c5-978c-4f66-83c7-11c213f99cb7)"
         />
-      </svg>
-      <div className="mx-auto max-w-7xl px-6 pb-24  sm:pb-32 lg:flex lg:px-8 lg:py-40 ">
-        <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pt-8">
-          {/* <img
-            className="h-11"
-            src="https://oyelabs.com/wp-content/uploads/2023/01/Group-80-1.svg"
-            alt="Your Company"
-          /> */}
+      </motion.svg>
+      <div className="mx-auto max-w-7xl px-6 pb-24 sm:pb-32 lg:flex lg:px-8 lg:py-40 ">
+        <motion.div
+          className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pt-8"
+          initial={{ opacity: 0, y: 220 }}
+          animate={{ opacity: 1, y: -30 }}
+          transition={{ duration: 1.0, delay: 0.4 }}
+        >
           <div className="mt-24 sm:mt-32 lg:mt-16">
             <a href="#" className="inline-flex space-x-6 ">
-              <span className="rounded-full bg-indigo-600/10 p-5 sm:text-3xl text-xl md:text-4xl font-semibold leading-6 text-indigo-600 ring-1 ring-inset ring-indigo-600/10">
+              <span className="rounded-full bg-indigo-600/10 p-1 sm:text-xl text-sm md:text-xl font-semibold leading-6 text-indigo-600 ring-1 ring-inset ring-indigo-600/10">
                 Hey there{" "}
                 <span
                   className="inline-block animate-spin-slow"
@@ -51,17 +66,14 @@ const Hero = () => {
             </a>
           </div>
           <h1 className="mt-10 text-3xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            I am Ambuj Dubey , from New Delhi, India
+            I am Ambuj Dubey, from New Delhi, India
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            working as a full time Associate Professor at PW (PhysicsWallah).
+            Working as a full-time Associate Professor at PW (PhysicsWallah).
           </p>
           <div className="mt-10 flex items-center gap-x-6">
-            <a
-              href="#"
-              className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              Experience
+            <a href="/contact">
+              <Button />
             </a>
             <a
               href="#"
@@ -70,8 +82,13 @@ const Hero = () => {
               <span aria-hidden="true">→</span>
             </a>
           </div>
-        </div>
-        <div className="mx-auto mt-16 flex w-xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-10">
+        </motion.div>
+        <motion.div
+          className="mx-auto mt-16 flex w-xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-10"
+          initial={{ opacity: 0, x: -120 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 1.0 }}
+        >
           <div className="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none">
             <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
               <img
@@ -83,9 +100,10 @@ const Hero = () => {
               />
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
+
 export default Hero;
