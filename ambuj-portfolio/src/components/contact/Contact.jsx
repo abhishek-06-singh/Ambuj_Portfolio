@@ -79,9 +79,20 @@ const Contact = () => {
     e.preventDefault();
 
     if (validateForm()) {
-      // Perform your form submission logic here
-      console.log("Form is valid, submitting data:", formData);
-      // You may want to reset the form state after successful submission
+      const phoneNo = "9685724428";
+
+      const encodedFormData = encodeURIComponent(
+        `First Name: ${formData.firstName}%0A` +
+          `Last Name: ${formData.lastName}%0A` +
+          `Company: ${formData.company}%0A` +
+          `Email: ${formData.email}%0A` +
+          `Message: ${formData.message}%0A`
+      );
+
+      window.location.replace(
+        `https://api.whatsapp.com/send?phone=${phoneNo}&text=${encodedFormData}`
+      );
+
       setFormData({
         firstName: "",
         lastName: "",
@@ -90,7 +101,6 @@ const Contact = () => {
         message: "",
         agreed: false,
       });
-      navigate("/"); // Redirect to the home page or another page
     } else {
       console.log("Form validation failed");
     }
