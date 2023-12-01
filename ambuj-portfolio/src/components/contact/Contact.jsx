@@ -81,16 +81,19 @@ const Contact = () => {
     if (validateForm()) {
       const phoneNo = "9685724428";
 
+      const messageHeader = encodeURIComponent(
+        "Hello, I visited your portfolio. Here are my details:"
+      );
+
       const encodedFormData = encodeURIComponent(
-        `First Name: ${formData.firstName}%0A` +
-          `Last Name: ${formData.lastName}%0A` +
-          `Company: ${formData.company}%0A` +
-          `Email: ${formData.email}%0A` +
-          `Message: ${formData.message}%0A`
+        `*Visitor Name:* ${formData.firstName} ${formData.lastName}%0A` +
+          `*Company:* ${formData.company}%0A` +
+          `*Email:* ${formData.email}%0A` +
+          `*Message:* ${formData.message}%0A`
       );
 
       window.location.replace(
-        `https://api.whatsapp.com/send?phone=${phoneNo}&text=${encodedFormData}`
+        `https://api.whatsapp.com/send?phone=${phoneNo}&text=${messageHeader}%0A%0A${encodedFormData}`
       );
 
       setFormData({
