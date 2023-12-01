@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 import { FaCheck, FaThumbsUp, FaUser } from "react-icons/fa";
 
 const Qualification = () => {
@@ -33,7 +34,6 @@ const Qualification = () => {
       icon: FaCheck,
       iconBackground: "bg-green-500",
     },
-
     {
       id: 4,
       content: "Completed High School",
@@ -46,9 +46,21 @@ const Qualification = () => {
     },
   ];
 
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(" ");
-  }
+  const controls = useAnimation();
+
+  const stagger = {
+    hidden: { opacity: 0, y: 120 },
+    visible: { opacity: 1, y: 0 },
+    transition: { duration: 1.0, delay: 0.4 },
+  };
+
+  const animateTimeline = async () => {
+    await controls.start("visible");
+  };
+
+  useEffect(() => {
+    animateTimeline(); // Trigger the animation when the component mounts
+  }, []); // Empty dependency array ensures it runs only once
 
   return (
     <div className="py-8">
@@ -56,10 +68,16 @@ const Qualification = () => {
         Qualifications
       </h2>
 
-      <div className="flex items-center justify-center p-10" id="qualification">
+      <motion.div
+        className="flex items-center justify-center p-10"
+        id="qualification"
+        initial={{ opacity: 0, y: 220 }}
+        animate={{ opacity: 1, y: -30 }}
+        transition={{ duration: 1.0, delay: 0.4 }}
+      >
         <ul role="list" className="-mb-20">
           {timeline.map((event, eventIdx) => (
-            <li key={event.id}>
+            <motion.li key={event.id} variants={stagger} custom={eventIdx}>
               <div className="relative pb-20">
                 {eventIdx !== timeline.length - 1 ? (
                   <span
@@ -70,10 +88,7 @@ const Qualification = () => {
                 <div className="relative flex space-x-3">
                   <div>
                     <span
-                      className={classNames(
-                        event.iconBackground,
-                        "h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white"
-                      )}
+                      className={`h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white ${event.iconBackground}`}
                     >
                       <event.icon
                         className="h-5 w-5 text-white"
@@ -99,10 +114,10 @@ const Qualification = () => {
                   </div>
                 </div>
               </div>
-            </li>
+            </motion.li>
           ))}
         </ul>
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -1,13 +1,31 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { IoChevronForwardSharp } from "react-icons/io5";
 import { GiTeacher, GiOrbitalRays, GiElectric } from "react-icons/gi";
+import { useInView } from "react-intersection-observer";
 
 const Feature = () => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
+  const fadeInLeft = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0 },
+  };
+
   const cards = [
     {
       name: "Teaching",
       description:
-        "Working as a Associate Professor in PhysicsWallah , helped over 1500 students on there path of Cracking GATE examination",
+        "Working as a Associate Professor in PhysicsWallah , helped over 1500 students on their path of Cracking GATE examination",
       icon: GiTeacher,
     },
     {
@@ -23,8 +41,10 @@ const Feature = () => {
       icon: GiElectric,
     },
   ];
+
   return (
-    <div
+    <motion.div
+      ref={ref}
       className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32"
       id="features"
     >
@@ -53,10 +73,20 @@ const Feature = () => {
       </div>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+          <motion.h2
+            className="text-4xl font-bold tracking-tight text-white sm:text-6xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             About Me
-          </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-300 animate__animated animate__fadeInLeft animate__delay-1s transition-transform">
+          </motion.h2>
+          <motion.p
+            className="mt-6 text-lg leading-8 text-gray-300"
+            initial={{ opacity: 0, x: 800 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, delay: 0.4 }}
+          >
             Hey there! 👋 I'm Ambuj Dudey, an Electrical Engineer who's all
             about turning volts into vibes and making physics seriously cool.
             🌐⚡ Graduating in 2021 from the stellar Samrat Ashok Technological
@@ -65,13 +95,16 @@ const Feature = () => {
             full-time Associate Professor at PhysicsWallah in Noida! 📚🎓 Every
             day, I'm diving into the fascinating world of physics, breaking down
             complex theories and turning them into mind-blowing lessons.
-          </p>
+          </motion.p>
         </div>
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-8">
-          {cards.map((card) => (
-            <div
+          {cards.map((card, index) => (
+            <motion.div
               key={card.name}
               className="flex gap-x-4 rounded-xl bg-white/5 p-6 ring-1 ring-inset ring-white/10"
+              initial={{ opacity: 0, y: 800 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.4 }}
             >
               <card.icon
                 className="h-7 w-5 flex-none text-indigo-400"
@@ -81,11 +114,11 @@ const Feature = () => {
                 <h3 className="font-semibold text-white">{card.name}</h3>
                 <p className="mt-2 text-gray-300">{card.description}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
