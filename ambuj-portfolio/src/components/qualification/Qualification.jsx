@@ -5,10 +5,10 @@ const Qualification = () => {
   const timeline = [
     {
       id: 1,
-      content: "Applied to",
+      content: "Working as ",
       target: "Associate Professor PW (PhysicsWallah) ",
       href: "#",
-      date: "Jan 2023 - present",
+      date: "Sep 2022 - present",
       datetime: "2023-01-20",
       icon: FaUser,
       iconBackground: "bg-gray-400",
@@ -57,10 +57,10 @@ const Qualification = () => {
       </h2>
 
       <div className="flex items-center justify-center p-10" id="qualification">
-        <ul role="list" className="-mb-8">
+        <ul role="list" className="-mb-20">
           {timeline.map((event, eventIdx) => (
             <li key={event.id}>
-              <div className="relative pb-8">
+              <div className="relative pb-20">
                 {eventIdx !== timeline.length - 1 ? (
                   <span
                     className="absolute left-4 top-4 -ml-px h-full w-0.5 bg-gray-200"
