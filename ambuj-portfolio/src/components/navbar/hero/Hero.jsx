@@ -47,9 +47,9 @@ const Hero = () => {
       <div className="mx-auto max-w-7xl px-6 pb-24 sm:pb-32 lg:flex lg:px-8 lg:py-40 ">
         <motion.div
           className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pt-8"
-          initial={{ opacity: 0, y: 220 }}
-          animate={{ opacity: 1, y: -30 }}
-          transition={{ duration: 1.0, delay: 0.4 }}
+         
+         
+         
         >
           <div className="mt-24 sm:mt-32 lg:mt-16">
             <a href="#" className="inline-flex space-x-6 ">

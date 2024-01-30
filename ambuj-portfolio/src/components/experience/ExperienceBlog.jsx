@@ -1,5 +1,5 @@
 import React from "react";
-import experienceBanner from "../../assets/WhatsApp Image 2023-11-28 at 11.23.20_9d3d0a33.jpg";
+import experienceBanner from "../../assets/WhatsApp Image 2024-01-25 at 20.27.17_112d1321.jpg";
 const ExperienceBlog = () => {
   const jobOpenings = [
     {
